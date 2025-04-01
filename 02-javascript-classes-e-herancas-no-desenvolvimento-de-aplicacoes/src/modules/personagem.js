@@ -24,9 +24,9 @@ export class Personagem {
     }
 
     if (personagem1.level > personagem2.level) {
-      return `${personagem1.constructor.tipo} ${personagem1.constructor.nome} é o vencedor!`;
+      return `${personagem1.constructor.tipo} ${personagem1.nome} é o vencedor!`;
     }
 
-    return `${personagem2.constructor.tipo} ${personagem2.constructor.nome} é o vencedor!`;
+    return `${personagem2.constructor.tipo} ${personagem2.nome} é o vencedor!`;
   }
 }
