@@ -35,3 +35,26 @@ function adicionarDados(grafico, legenda, dados) {
 
 let workerDolar = new Worker("./script/workers/workerDolar.js");
 workerDolar.postMessage("usd");
+
+workerDolar.addEventListener("message", (event) => {
+  let tempo = gerarHorario();
+  let valor = event.data.ask;
+
+  imprimeCotacao("dolar", valor);
+  adicionarDados(graficoParaDolar, tempo, valor);
+});
+
+const graficoIene = document.querySelectorById("graficoIene");
+const graficoParaIene = new Chart(graficoIene, {
+  type: "line",
+  data: {
+    labels: [],
+    datasets: [
+      {
+        label: "Iene",
+        data: [],
+        borderWidth: 1,
+      },
+    ],
+  },
+});
