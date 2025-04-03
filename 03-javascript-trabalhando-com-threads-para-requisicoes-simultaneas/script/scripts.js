@@ -58,3 +58,14 @@ const graficoParaIene = new Chart(graficoIene, {
     ],
   },
 });
+
+let workerIene = new Worker("./script/workers/workerIene.js");
+workerIene.postMessage("iene");
+
+workerIene.addEventListener("message", (event) => {
+  let tempo = gerarHorario();
+  let valor = event.data.ask;
+
+  imprimeCotacao("iene", valor);
+  adicionarDados(graficoParaIene, tempo, valor);
+});
